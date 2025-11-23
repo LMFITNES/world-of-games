@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World of Games - Sua Loja de Produtos Gamer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset e configurações básicas */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --verde-principal: #1a936f;
+            --verde-escuro: #106a53;
+            --azul-principal: #2a6f97;
+            --azul-escuro: #1d4e6f;
+            --branco: #ffffff;
+            --cinza-claro: #f5f5f5;
+            --cinza-escuro: #333333;
+            --cinza-medio: #777777;
+        }
+        
+        body {
+            background-color: var(--cinza-claro);
+            color: var(--cinza-escuro);
+            line-height: 1.6;
+        }
+        
+        /* Header e Navegação */
+        header {
+            background: linear-gradient(135deg, var(--verde-principal), var(--azul-principal));
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            color: var(--branco);
+            text-decoration: none;
+        }
+        
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--verde-principal), var(--azul-principal));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .logo-icon::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 30% 30%, var(--azul-principal) 10%, transparent 10.5%),
+                radial-gradient(circle at 70% 70%, var(--verde-principal) 10%, transparent 10.5%),
+                radial-gradient(circle at 50% 20%, var(--azul-escuro) 8%, transparent 8.5%),
+                radial-gradient(circle at 20% 60%, var(--verde-escuro) 7%, transparent 7.5%);
+            border-radius: 50%;
+        }
+        
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: bold;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            color: var(--branco);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 15px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        nav ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .cart-icon {
+            position: relative;
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: var(--verde-escuro);
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        
+        /* Banner Principal */
+        .banner {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--branco);
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .banner h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        }
+        
+        .banner p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--verde-principal), var(--azul-principal));
+            color: var(--branco);
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--branco);
+        }
+        
+        .btn-outline:hover {
+            background: var(--branco);
+            color: var(--azul-principal);
+        }
+        
+        /* Seção de Produtos */
+        .products {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--azul-escuro);
+            font-size: 2.2rem;
+        }
+        
+        .filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+        
+        .filter-btn {
+            background: var(--branco);
+            border: 1px solid var(--cinza-medio);
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--azul-principal);
+            color: var(--branco);
+            border-color: var(--azul-principal);
+        }
+        
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .product-card {
+            background-color: var(--branco);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            position: relative;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .product-image {
+            height: 200px;
+            background-color: var(--cinza-claro);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .product-image img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
+        }
+        
+        .product-info {
+            padding: 20px;
+        }
+        
+        .product-category {
+            color: var(--verde-principal);
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+        
+        .product-name {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--cinza-escuro);
+        }
+        
+        .product-price {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: var(--azul-principal);
+            margin-bottom: 15px;
+        }
+        
+        .product-actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .btn-small {
+            padding: 8px 15px;
+            font-size: 0.9rem;
+        }
+        
+        .btn-cart {
+            background: var(--verde-principal);
+            flex: 1;
+        }
+        
+        .btn-wishlist {
+            background: transparent;
+            border: 1px solid var(--cinza-medio);
+            color: var(--cinza-escuro);
+        }
+        
+        .btn-wishlist.active {
+            background: #ff4757;
+            border-color: #ff4757;
+            color: white;
+        }
+        
+        .btn-wishlist:hover {
+            background: var(--cinza-claro);
+        }
+        
+        /* Seção Sobre */
+        .about {
+            background: linear-gradient(135deg, var(--verde-principal), var(--azul-principal));
+            color: var(--branco);
+            padding: 80px 0;
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .about h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+        }
+        
+        .about p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--cinza-escuro);
+            color: var(--branco);
+            padding: 50px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--verde-principal);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: var(--cinza-claro);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--verde-principal);
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .social-icons a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--branco);
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        
+        .social-icons a:hover {
+            background-color: var(--verde-principal);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        /* Modal do Carrinho */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content {
+            background-color: var(--branco);
+            border-radius: 10px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+            padding: 30px;
+            position: relative;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--cinza-escuro);
+        }
+        
+        .cart-items {
+            margin: 20px 0;
+        }
+        
+        .cart-item {
+            display: flex;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid var(--cinza-claro);
+        }
+        
+        .cart-item-image {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-right: 15px;
+        }
+        
+        .cart-item-details {
+            flex: 1;
+        }
+        
+        .cart-item-name {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .cart-item-price {
+            color: var(--azul-principal);
+            font-weight: bold;
+        }
+        
+        .cart-item-quantity {
+            display: flex;
+            align-items: center;
+            margin: 0 15px;
+        }
+        
+        .quantity-btn {
+            width: 30px;
+            height: 30px;
+            background: var(--cinza-claro);
+            border: none;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        
+        .quantity-input {
+            width: 40px;
+            text-align: center;
+            margin: 0 10px;
+            border: 1px solid var(--cinza-medio);
+            border-radius: 5px;
+            padding: 5px;
+        }
+        
+        .cart-total {
+            text-align: right;
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin: 20px 0;
+            padding-top: 20px;
+            border-top: 2px solid var(--cinza-claro);
+        }
+        
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                margin-top: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 5px;
+            }
+            
+            .banner h1 {
+                font-size: 2.2rem;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .product-actions {
+                flex-direction: column;
+            }
+            
+            .cart-item {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .cart-item-image {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+            
+            .cart-item-quantity {
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">
+                    <div class="logo-icon"></div>
+                    <div class="logo-text">World of Games</div>
+                </a>
+                <nav>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-home"></i> Início</a></li>
+                        <li><a href="#products"><i class="fas fa-gamepad"></i> Produtos</a></li>
+                        <li><a href="#"><i class="fas fa-tag"></i> Ofertas</a></li>
+                        <li><a href="#about"><i class="fas fa-info-circle"></i> Sobre</a></li>
+                        <li><a href="#"><i class="fas fa-envelope"></i> Contato</a></li>
+                        <li class="cart-icon">
+                            <a href="#" id="cart-toggle">
+                                <i class="fas fa-shopping-cart"></i> 
+                                <span class="cart-count">0</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Banner Principal -->
+    <section class="banner">
+        <div class="container">
+            <h1>Bem-vindo ao World of Games</h1>
+            <p>Encontre os melhores vídeo games, PCs gamers e controles com os melhores preços do mercado!</p>
+            <a href="#products" class="btn">Ver Produtos</a>
+            <a href="#about" class="btn btn-outline">Sobre Nós</a>
+        </div>
+    </section>
+
+    <!-- Seção de Produtos -->
+    <section class="products" id="products">
+        <div class="container">
+            <h2 class="section-title">Nossos Produtos</h2>
+            
+            <div class="filters">
+                <button class="filter-btn active" data-filter="all">Todos</button>
+                <button class="filter-btn" data-filter="console">Consoles</button>
+                <!-- BOTÃO ALTERADO: "PCs" para "PC" -->
+                <button class="filter-btn" data-filter="computador">PC</button>
+                <button class="filter-btn" data-filter="controle">Controles</button>
+                <!-- BOTÃO REMOVIDO: "Acessórios" -->
+            </div>
+            
+            <div class="product-grid">
+                <!-- Produto 1 - PC Gamer Pro -->
+                <div class="product-card" data-category="computador">
+                    <div class="product-image">
+                        <!-- IMAGEM ATUALIZADA COM URL CORRETA DO DISCORD -->
+                        <img src="https://cdn.discordapp.com/attachments/1283875405144657940/1442227802823852143/Imagem_do_WhatsApp_de_2025-11-05_as_14.55.46_9f460ade.jpg?ex=6924aacf&is=6923594f&hm=973481e39a05dcea6f2b3edf1e2bfa8cf7bb8f318ee33594a78bcfb5b3a5d06e&" alt="PC Gamer Pro">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Computador</div>
+                        <h3 class="product-name">PC Gamer Pro</h3>
+                        <div class="product-price">R$ 6.999,00</div>
+                        <div class="product-actions">
+                            <button class="btn btn-small btn-cart" data-id="2" data-name="PC Gamer Pro" data-price="6999.00" data-image="https://cdn.discordapp.com/attachments/1283875405144657940/1442227802823852143/Imagem_do_WhatsApp_de_2025-11-05_as_14.55.46_9f460ade.jpg?ex=6924aacf&is=6923594f&hm=973481e39a05dcea6f2b3edf1e2bfa8cf7bb8f318ee33594a78bcfb5b3a5d06e&">
+                                <i class="fas fa-shopping-cart"></i> Adicionar
+                            </button>
+                            <button class="btn btn-small btn-wishlist" data-id="2">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Produto 2 - Controle Gamer Pro RGB -->
+                <div class="product-card" data-category="controle">
+                    <div class="product-image">
+                        <img src="https://cdn.discordapp.com/attachments/1283875405144657940/1442221565831024951/Imagem_do_WhatsApp_de_2025-11-05_as_16.57.51_7116891a-convertido-de-jpg.png?ex=6924a500&is=69235380&hm=7dc1ead7d090c3bb2555d1157eadb899e72b886fdf4d7dc224fc82220970b36d&" alt="Controle Gamer Pro">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Controle</div>
+                        <h3 class="product-name">Controle Gamer Pro RGB</h3>
+                        <div class="product-price">R$ 279,00</div>
+                        <div class="product-actions">
+                            <button class="btn btn-small btn-cart" data-id="5" data-name="Controle Gamer Pro RGB" data-price="279.00" data-image="https://cdn.discordapp.com/attachments/1283875405144657940/1442221565831024951/Imagem_do_WhatsApp_de_2025-11-05_as_16.57.51_7116891a-convertido-de-jpg.png?ex=6924a500&is=69235380&hm=7dc1ead7d090c3bb2555d1157eadb899e72b886fdf4d7dc224fc82220970b36d&">
+                                <i class="fas fa-shopping-cart"></i> Adicionar
+                            </button>
+                            <button class="btn btn-small btn-wishlist" data-id="5">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- PRODUTOS REMOVIDOS:
+                - PlayStation 5
+                - Controle Xbox Series X  
+                - Nintendo Switch OLED
+                - Teclado Mecânico RGB -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Sobre -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Sobre a World of Games</h2>
+                    <p>Somos uma loja especializada em produtos gamers, oferecendo as melhores marcas e os últimos lançamentos do mercado. Nossa missão é proporcionar a melhor experiência de compra para gamers de todos os níveis.</p>
+                    <p>Com anos de experiência no mercado, garantimos produtos de qualidade, preços competitivos e um atendimento especializado para ajudar você a encontrar exatamente o que precisa para elevar seu nível de jogo.</p>
+                    <a href="#" class="btn">Saiba Mais</a>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1593305841991-05c297ba4575?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Loja World of Games">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>World of Games</h3>
+                    <p>Sua loja de confiança para produtos gamers. Oferecemos qualidade, variedade e os melhores preços.</p>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Produtos</h3>
+                    <ul>
+                        <li><a href="#">Vídeo Games</a></li>
+                        <li><a href="#">PCs Gamers</a></li>
+                        <li><a href="#">Controles</a></li>
+                        <li><a href="#">Acessórios</a></li>
+                        <li><a href="#">Jogos</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Links Úteis</h3>
+                    <ul>
+                        <li><a href="#">Sobre Nós</a></li>
+                        <li><a href="#">Contato</a></li>
+                        <li><a href="#">Política de Privacidade</a></li>
+                        <li><a href="#">Termos de Uso</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contato</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Rua dos Games, 123</li>
+                        <li><i class="fas fa-phone"></i> (11) 9999-9999</li>
+                        <li><i class="fas fa-envelope"></i> contato@worldofgames.com</li>
+                        <li><i class="fas fa-clock"></i> Seg-Sex: 9h-18h</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2023 World of Games. Todos os direitos reservados.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal do Carrinho -->
+    <div class="modal" id="cart-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Seu Carrinho</h2>
+            <div class="cart-items" id="cart-items">
+                <!-- Itens do carrinho serão inseridos aqui via JavaScript -->
+                <p id="empty-cart-message">Seu carrinho está vazio</p>
+            </div>
+            <div class="cart-total" id="cart-total" style="display: none;">
+                Total: R$ <span id="total-amount">0,00</span>
+            </div>
+            <div class="product-actions">
+                <button class="btn" id="checkout-btn" style="display: none;">Finalizar Compra</button>
+                <button class="btn btn-outline" id="continue-shopping">Continuar Comprando</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Carrinho de compras
+        let cart = [];
+        let wishlist = [];
+        const cartToggle = document.getElementById('cart-toggle');
+        const cartModal = document.getElementById('cart-modal');
+        const closeModal = document.querySelector('.close-modal');
+        const continueShopping = document.getElementById('continue-shopping');
+        const cartItems = document.getElementById('cart-items');
+        const cartTotal = document.getElementById('cart-total');
+        const totalAmount = document.getElementById('total-amount');
+        const emptyCartMessage = document.getElementById('empty-cart-message');
+        const checkoutBtn = document.getElementById('checkout-btn');
+        const cartCount = document.querySelector('.cart-count');
+        
+        // Abrir/fechar modal do carrinho
+        cartToggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            cartModal.style.display = 'flex';
+            updateCartDisplay();
+        });
+        
+        closeModal.addEventListener('click', () => {
+            cartModal.style.display = 'none';
+        });
+        
+        continueShopping.addEventListener('click', () => {
+            cartModal.style.display = 'none';
+        });
+        
+        // Fechar modal ao clicar fora
+        window.addEventListener('click', (e) => {
+            if (e.target === cartModal) {
+                cartModal.style.display = 'none';
+            }
+        });
+        
+        // Adicionar produto ao carrinho
+        document.querySelectorAll('.btn-cart').forEach(button => {
+            button.addEventListener('click', (e) => {
+                const product = {
+                    id: e.currentTarget.dataset.id,
+                    name: e.currentTarget.dataset.name,
+                    price: parseFloat(e.currentTarget.dataset.price),
+                    image: e.currentTarget.dataset.image,
+                    quantity: 1
+                };
+                
+                addToCart(product);
+                
+                // Feedback visual
+                const originalText = button.innerHTML;
+                button.innerHTML = '<i class="fas fa-check"></i> Adicionado';
+                button.style.background = 'var(--verde-escuro)';
+                
+                setTimeout(() => {
+                    button.innerHTML = originalText;
+                    button.style.background = '';
+                }, 1500);
+            });
+        });
+        
+        // Adicionar/remover dos favoritos
+        document.querySelectorAll('.btn-wishlist').forEach(button => {
+            button.addEventListener('click', (e) => {
+                const productId = e.currentTarget.dataset.id;
+                const icon = e.currentTarget.querySelector('i');
+                
+                if (wishlist.includes(productId)) {
+                    // Remover dos favoritos
+                    wishlist = wishlist.filter(id => id !== productId);
+                    e.currentTarget.classList.remove('active');
+                    icon.classList.remove('fas');
+                    icon.classList.add('far');
+                    
+                    // Feedback visual
+                    e.currentTarget.style.background = '';
+                    e.currentTarget.style.borderColor = 'var(--cinza-medio)';
+                    e.currentTarget.style.color = 'var(--cinza-escuro)';
+                } else {
+                    // Adicionar aos favoritos
+                    wishlist.push(productId);
+                    e.currentTarget.classList.add('active');
+                    icon.classList.remove('far');
+                    icon.classList.add('fas');
+                    
+                    // Feedback visual
+                    e.currentTarget.style.background = '#ff4757';
+                    e.currentTarget.style.borderColor = '#ff4757';
+                    e.currentTarget.style.color = 'white';
+                }
+            });
+        });
+        
+        function addToCart(product) {
+            const existingItem = cart.find(item => item.id === product.id);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push(product);
+            }
+            
+            updateCartCount();
+            updateCartDisplay();
+        }
+        
+        function updateCartCount() {
+            const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+            cartCount.textContent = totalItems;
+        }
+        
+        function updateCartDisplay() {
+            cartItems.innerHTML = '';
+            
+            if (cart.length === 0) {
+                emptyCartMessage.style.display = 'block';
+                cartTotal.style.display = 'none';
+                checkoutBtn.style.display = 'none';
+                return;
+            }
+            
+            emptyCartMessage.style.display = 'none';
+            cartTotal.style.display = 'block';
+            checkoutBtn.style.display = 'block';
+            
+            let total = 0;
+            
+            cart.forEach(item => {
+                total += item.price * item.quantity;
+                
+                const cartItem = document.createElement('div');
+                cartItem.className = 'cart-item';
+                cartItem.innerHTML = `
+                    <img src="${item.image}" alt="${item.name}" class="cart-item-image">
+                    <div class="cart-item-details">
+                        <div class="cart-item-name">${item.name}</div>
+                        <div class="cart-item-price">R$ ${item.price.toFixed(2).replace('.', ',')}</div>
+                    </div>
+                    <div class="cart-item-quantity">
+                        <button class="quantity-btn minus" data-id="${item.id}">-</button>
+                        <input type="number" class="quantity-input" value="${item.quantity}" min="1" data-id="${item.id}">
+                        <button class="quantity-btn plus" data-id="${item.id}">+</button>
+                    </div>
+                    <button class="btn btn-small remove-item" data-id="${item.id}">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                `;
+                
+                cartItems.appendChild(cartItem);
+            });
+            
+            totalAmount.textContent = total.toFixed(2).replace('.', ',');
+            
+            // Adicionar eventos para os botões de quantidade e remoção
+            document.querySelectorAll('.quantity-btn.minus').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const id = e.target.dataset.id;
+                    updateQuantity(id, -1);
+                });
+            });
+            
+            document.querySelectorAll('.quantity-btn.plus').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const id = e.target.dataset.id;
+                    updateQuantity(id, 1);
+                });
+            });
+            
+            document.querySelectorAll('.quantity-input').forEach(input => {
+                input.addEventListener('change', (e) => {
+                    const id = e.target.dataset.id;
+                    const newQuantity = parseInt(e.target.value);
+                    if (newQuantity > 0) {
+                        setQuantity(id, newQuantity);
+                    } else {
+                        setQuantity(id, 1);
+                    }
+                });
+            });
+            
+            document.querySelectorAll('.remove-item').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const id = e.target.closest('.remove-item').dataset.id;
+                    removeFromCart(id);
+                });
+            });
+        }
+        
+        function updateQuantity(id, change) {
+            const item = cart.find(item => item.id === id);
+            if (item) {
+                item.quantity += change;
+                if (item.quantity < 1) {
+                    item.quantity = 1;
+                }
+                updateCartCount();
+                updateCartDisplay();
+            }
+        }
+        
+        function setQuantity(id, quantity) {
+            const item = cart.find(item => item.id === id);
+            if (item) {
+                item.quantity = quantity;
+                updateCartCount();
+                updateCartDisplay();
+            }
+        }
+        
+        function removeFromCart(id) {
+            cart = cart.filter(item => item.id !== id);
+            updateCartCount();
+            updateCartDisplay();
+        }
+        
+        // Finalizar compra
+        checkoutBtn.addEventListener('click', () => {
+            alert('Compra finalizada com sucesso! Total: R$ ' + totalAmount.textContent);
+            cart = [];
+            updateCartCount();
+            updateCartDisplay();
+            cartModal.style.display = 'none';
+        });
+        
+        // Filtros de produtos
+        document.querySelectorAll('.filter-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                // Remover classe active de todos os botões
+                document.querySelectorAll('.filter-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                
+                // Adicionar classe active ao botão clicado
+                button.classList.add('active');
+                
+                const filter = button.dataset.filter;
+                
+                // Filtrar produtos
+                document.querySelectorAll('.product-card').forEach(card => {
+                    if (filter === 'all' || card.dataset.category === filter) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+        
+        // Smooth scroll para âncoras
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Links de navegação - todos funcionais
+        document.querySelectorAll('nav a, .footer-column a, .about-text a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                // Se for um link âncora, já tratamos acima
+                if (this.getAttribute('href').startsWith('#')) return;
+                
+                // Para outros links, apenas mostrar mensagem (em um site real, seguiriam o link)
+                e.preventDefault();
+                alert('Em um site real, este link levaria para: ' + this.getAttribute('href'));
+            });
+        });
+        
+        // Links de redes sociais
+        document.querySelectorAll('.social-icons a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                alert('Em um site real, este link levaria para nossa página no ' + 
+                      this.querySelector('i').className.split('fa-')[1].replace('-f', ''));
+            });
+        });
+    </script>
+</body>
+</html>
